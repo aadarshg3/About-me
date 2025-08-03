@@ -1,0 +1,717 @@
+- **String:**
+
+In Python, a string is an immutable sequence of Unicode characters. It is one of the most commonly used data types. Strings can be created using single quotes (''), double quotes (""), or triple quotes (''' or """) for multi-line strings.
+
+### Key Characteristics of Python Strings:
+
+- Immutable: Once created, strings cannot be modified
+- Ordered: Characters maintain their position and can be accessed by index
+- Iterable:  Can be looped through character by character
+- Supports slicing: Can extract portions using index ranges
+
+```python
+# String creation examples
+single_quoted = 'Hello'
+double_quoted = "World"
+multi_line = '''This is 
+NetG India's 
+Python Class'''
+
+```
+
+```python
+# Example of how this works in memory:
+box = "Apple"    # Creates a variable 'box' that stores the string "Apple"
+print(box)       # Output: Apple
+print(type(box)) # Output: <class 'str'> (shows it's a string type)
+
+```
+
+```python
+# These will cause errors:
+"apple" = box        # SyntaxError: can't assign to literal
+print(undefined_box) # NameError: name 'undefined_box' is not defined
+
+# Correct way:
+box = "apple"        # Valid assignment
+print(box)          # Works fine: prints "apple"
+
+```
+
+```python
+# Example in code
+salt_box = "Salt"
+sugar_box = "Sugar"
+
+# To see memory locations
+print(id(salt_box))  # Will show actual memory address
+print(id(sugar_box)) # Will show different memory address
+
+output:
+
+Value of salt_box: Salt
+Memory address of salt_box: 140448083084848
+
+Value of sugar_box: Sugar
+Memory address of sugar_box: 140448083084976
+```
+
+```jsx
+Positive Indexing 
+
+>>> box = "Sugar"
+>>> 
+>>> box[0]
+'S'
+>>> box[1]
+'u'
+>>> box[2]
+'g'
+>>> box[3]
+'a'
+>>> box[4]
+'r'
+>>> box[5]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+IndexError: string index out of range
+>>> 
+```
+
+```jsx
+>>> box[-1]
+'r'
+>>> box[-2]
+'a'
+>>> box[-3]
+'g'
+>>> box[-4]
+'u'
+>>> box[-5]
+'S'
+>>> box[-6]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+IndexError: string index out of range
+>>> 
+```
+
+```python
+box = 'Sugar'
+box[0:4]
+```
+
+```jsx
+
+python = "This_is_NetG_India"
+
+---
+python = "This_is_NetG_India"
+
+# Basic Slicing
+print(python[0:4])     # Output: 'This'    → indexes 0 to 3
+print(python[5:7])     # Output: 'is'      → indexes 5 to 6
+print(python[8:12])    # Output: 'NetG'    → indexes 8 to 11
+print(python[-5:])     # Output: 'India'   → last 5 characters
+
+# With step
+print(python[::2])     # Output: 'Ti_sNt_nda' → every 2nd character
+print(python[::-1])    # Output: 'aidnI_GteN_si_sihT' → reversed string
+```
+
+---
+
+Then:
+
+- `python[0:4]` → `This`  
+- `python[8:12]` → `NetG`  
+- `python[-5:]` → from 5th last to end → `India`  
+
+- python[::-1]` → reverses whole string  
+>>> python = "This_is_NetG_India"
+>>> python[::-1]
+'aidnI_GteN_si_sihT'
+>>> 
+---
+
+```
+
+---
+
+```jsx
+Q) how to check all the method available for string?
+Ans: dir(str)
+
+['__add__', '__class__', '__contains__', '__delattr__', '__dir__', '__doc__', 
+ '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__getnewargs__',
+ '__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__len__',
+ '__lt__', '__mod__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__',
+ '__repr__', '__rmod__', '__rmul__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__',
+ 'capitalize', 'casefold', 'center', 'count', 'encode', 'endswith', 'expandtabs', 
+ 'find', 'format', 'format_map', 'index', 'isalnum', 'isalpha', 'isascii', 'isdecimal',
+ 'isdigit', 'isidentifier', 'islower', 'isnumeric', 'isprintable', 'isspace', 
+ 'istitle', 'isupper', 'join', 'ljust', 'lower', 'lstrip', 'maketrans', 'partition',
+ 'removeprefix', 'removesuffix', 'replace', 'rfind', 'rindex', 'rjust', 'rpartition', 
+ 'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip', 'swapcase', 
+ 'title', 'translate', 'upper', 'zfill']
+
+```
+
+# Que: how a method works?
+
+```jsx
+>>> help(str.upper)
+
+The expression `help(str.upper)` is used to get the documentation or help on
+the `upper()` method of Python's `str` (string) class. 
+```
+
+### Example Usage:  String’s format method
+
+# ping {destination_ip} source {source_ip}
+
+```jsx
+### 📌 1. **Ping Command with `format()`**
+
+ping_cmd = "ping {} source {}"
+ping_cmd = ping_cmd.format(destination_ip, source_ip)
+
+#### 🔄 Example Usage:
+
+ping_cmd = "ping {} source {}"
+ping_cmd.format("2.2.2.2", "1.1.1.1")
+# Output: 'ping 2.2.2.2 source 1.1.1.1'
+
+ping_cmd.format("8.8.8.8", "192.168.1.10")
+# Output: 'ping 8.8.8.8 source 192.168.1.10'
+
+---
+
+### 📌 2. **Ping Command Using Variables**
+
+dst_ip = "2.2.2.2"
+src_ip = "1.1.1.1"
+ping_cmd = "ping {} source {}"
+ping_output = ping_cmd.format(dst_ip, src_ip)
+print(ping_output)
+
+#### ✅ Output:
+
+ping 2.2.2.2 source 1.1.1.1
+
+---
+
+### 📌 3. **VLAN Configuration Command**
+
+vlan_cmd = "vlan {}"
+vlan_id = 10
+print(vlan_cmd.format(vlan_id))
+
+#### ✅ Output:
+
+vlan 10
+
+---
+
+### 📌 4. **SNMP Configuration Command**
+
+snmp_cmd = "snmp-server host {} {} {}"
+ip = "1.1.1.1"
+community_name = "public"
+trap_type = "link-down"
+snmp_output = snmp_cmd.format(ip, community_name, trap_type)
+print(snmp_output)
+
+#### ✅ Output:
+
+snmp-server host 1.1.1.1 public link-down
+
+---
+
+### 📌 5. **DNS Configuration Command**
+
+dns_cmd = "ip name-server {}"
+dns_server_ip = "8.8.8.8"
+dns_output = dns_cmd.format(dns_server_ip)
+print(dns_output)
+
+#### ✅ Output:
+
+ip name-server 8.8.8.8
+
+---
+
+### 📌 6. **User Account Configuration Command**
+
+cmd1 = "username {}  privilege {} password {}"
+username = "admin"
+priv_level = "15"
+password = "netg"
+output1 = cmd1.format(username, priv_level, password)
+print(output1)
+
+#### ✅ Output:
+
+username admin  privilege 15 password netg
+
+---
+
+### 📌 7. **NTP Server Configuration Command**
+
+ntp_cmd = "ntp server {}"
+ntp_server = "server 0.in.pool.ntp.org"
+output2 = ntp_cmd.format(ntp_server)
+print(output2)
+
+#### ✅ Output:
+
+ntp server server 0.in.pool.ntp.org
+
+---
+```
+
+### Example Usage:  String’s || lower || upper || method
+
+```python
+s = "hello world"
+print(s.upper())  
+
+# Output: "HELLO WORLD"
+
+>>> intf_name = "GigabitEthernet0/1"
+>>> 
+>>> if intf_name == "GIGABITETHERNET0/1":
+...     print("Interface found")
+... else:
+...     print("Interface NOT found")
+... 
+Interface NOT found  ==>  Think why? 
+>>> 
+>>> 
+>>> if intf_name.upper() == "GIGABITETHERNET0/1":
+...     print("Interface found")
+... else:
+...     print("Interface NOT found")
+... 
+Interface found   ==> why is clear this time? 
+>>> 
+>>> 
+>>> if intf_name.lower() == "gigabitethernet0/1":
+...     print("Interface found")
+... else:
+...     print("Interface NOT found")
+... 
+Interface found
+>>> 
+```
+
+```jsx
+device = "ROUTER"
+
+---
+
+### 🔹 1. **Fetch a single character by index**
+
+print(device[0])   # 'R' → first character
+print(device[3])   # 'T' → fourth character
+
+---
+
+### 🔹 2. **Negative indexing (from right)**
+
+print(device[-1])  # 'R' → last character
+print(device[-2])  # 'E' → second-last character
+
+---
+
+### 🔹 3. **Slice a substring**
+
+print(device[1:4])  # 'OUT' → characters at index 1, 2, 3
+print(device[:3])   # 'ROU' → from start to index 2
+print(device[2:])   # 'UTER' → from index 2 to end
+
+---
+
+### 🔹 4. **Slice with jump/step (stride)**
+
+print(device[::2])  # 'RUE' → every 2nd char: index 0, 2, 4
+print(device[1::2]) # 'OTR' → every 2nd char starting from index 1
+
+---
+
+### 🔹 5. **Reverse the string**
+
+print(device[::-1])  # 'RETUOR' → full string in reverse
+
+---
+
+### 🔹 6. **Slice with jump in reverse**
+
+print(device[-1::-2])  # 'RTE' → from end to start, skipping 1 character
+print(device[5:1:-1])   # 'RETU' → index 5 to 2 in reverse
+
+---
+```
+
+### Concatenation
+
+```python
+###  What is **Concatenation** in Python?
+
+**Concatenation** means **joining two or more strings together
+ into a single string** using the `+` operator
+  (or other techniques like `f-strings` or `.format()`).
+
+---
+
+### 🔹 Example using `+` (plus) operator:
+
+vlan = "vlan"            # String 1
+vlan_id = "10"           # String 2
+
+# Concatenate them
+result = vlan + vlan_id
+
+print(result)
+
+**🔸Output:**
+
+vlan10
+
+---
+
+### 🔹 Example with space between values:
+
+vlan_name = "Accounting"
+result = vlan + " " + vlan_name
+print(result)
+
+**🔸Output:**
+
+vlan Accounting
+
+---
+
+### 🚫 Common Concatenation Error:
+
+Python **does not allow** concatenation of a string and an integer directly. 
+Here's an example that will raise an error:
+
+vlan_id = 10          # This is an integer
+result = vlan + vlan_id  # ❌ Error: mixing string + int
+
+**🔸Error:**
+
+TypeError: can only concatenate str (not "int") to str
+
+---
+
+### ✅ How to fix it?
+
+Convert the integer to a string using `str()` before concatenating:
+
+vlan_id = 10
+result = vlan + **str(vlan_id)**
+print(result)
+
+**🔸Output:**
+
+vlan10
+
+---
+```
+
+### typecasting
+
+```python
+
+What is Typecasting in Python (Network Context)?
+
+---
+
+#### Example 1: Converting VLAN ID string to integer for validation
+
+vlan_id_str = "20"              # From YAML or user input
+vlan_id_int = int(vlan_id_str)  # Convert to int to do math or range check
+
+if vlan_id_int > 1 and vlan_id_int < 4095:
+    print("Valid VLAN ID")     
+    
+# Output: Valid VLAN ID
+
+---
+
+#### Example 2: Converting device ID (int) to string for hostname
+
+device_id = 5
+hostname = "Router" + str(device_id)  # Convert int to string before concatenation
+
+print(hostname)  
+
+# Output: Router5
+
+---
+
+#### Example 3: Convert list of IPs to string for printing
+
+ip_list = ["192.168.1.1", "192.168.1.2"]
+ip_string = ", ".join(ip_list)
+
+print("Devices found at: " + ip_string)
+# Output: Devices found at: 192.168.1.1, 192.168.1.2
+
+---
+
+### ⚠️ **Common Error Examples**
+
+#### ❌ Error 1: Trying to convert a non-numeric string to integer
+
+vlan_id = "twenty"
+vlan_number = int(vlan_id)
+
+**Output:**
+
+ValueError: invalid literal for int() with base 10: 'twenty'
+
+#### ❌ Error 2: Concatenating int with string without conversion
+
+device_number = 1
+hostname = "Switch" + device_number
+
+**Output:**
+
+**TypeError**: can only concatenate str (not "int") to str
+
+**Fix:**
+
+hostname = "Switch" + str(device_number)
+
+======================================
+
+num = 10
+"vlan" + num           # ❌ Error
+"vlan " + str(num)     # ✅ Works
+
+---
+
+### ❌ Line 1: `"vlan" + num`
+
+* `"vlan"` is a **string**
+* `num = 10` is an **integer**
+* You are trying to **concatenate a string with an int**, which Python
+ **doesn’t allow automatically**
+
+#### ❗ Error Output:
+
+TypeError: can only concatenate str (not "int") to str
+
+> 💥 Python protects you from combining things that don't logically 
+go together (like adding "vlan" to 10 as if they’re the same type).
+
+---
+
+### ✅ Line 2: `"vlan " + str(num)`
+
+Here, you're doing **typecasting**:
+
+* `str(num)` converts the `int` 10 to the **string** `"10"`
+* Now `"vlan " + "10"` = `"vlan 10"`
+
+✅ This is valid because both are now of the same type (`str`).
+
+---
+
+```
+
+# ## code to identify private ip range of each class :
+
+```jsx
+====LOGIC-1_Class-Example =================
+num = 1
+while(num <= 10):
+    ip = input("Enter your ip:").strip().split(".")
+    print(ip)
+    if ip.startswith("10."):
+        print("CLass A private ip address")
+    elif ip.startswith("192.168."):
+        print("CLass C private ip address")
+    elif ip.startswith("172") and float(ip[4:7]) >= 16. and float(ip[4:7]) <= 31.:
+        print("Class B private ip")
+    else:
+        print("NOT a private ip")   
+    
+    choice = input("Do you want to continue (Y/N):")
+    if choice.upper() != "Y":
+        break
+    num = num + 1
+
+print("after exit")
+        
+```
+
+```jsx
+# ========= LOGIC-2 using strictly string method==============
+
+# User input for IP address
+while(True):  # keep asking values 
+    ip = input("Enter an IP address: ")
+
+    # Check if the IP address contains exactly three dots (.)
+    if ip.count('.') != 3:
+        print("Invalid IP address")
+    else:
+        # Find positions of dots in the IP address
+        dot1 = ip.find('.')
+        dot2 = ip.find('.', dot1 + 1)
+        dot3 = ip.find('.', dot2 + 1)
+        # print(dot1)
+        # print(dot2)
+        # print(dot3)
+
+        # Extract each part of the IP address by slicing the string
+        part1 = ip[:dot1]
+        part2 = ip[dot1 + 1:dot2]
+        part3 = ip[dot2 + 1:dot3]
+        part4 = ip[dot3 + 1:]
+        # print(part1)
+        # print(part2)
+        # print(part3)
+        # print(part4)
+        # Validate each part to ensure it is a number between 0 and 255
+
+        if not (part1.isdigit() and part2.isdigit() and part3.isdigit() and part4.isdigit()):
+            print("Invalid IP address - non-numeric characters found.")
+        else:
+            part1 = int(part1)
+            part2 = int(part2)
+            part3 = int(part3)
+            part4 = int(part4)
+
+            # Check if each part is between 0 and 255
+            if not (0 <= part1 <= 255 and 0 <= part2 <= 255 and 0 <= part3 <= 255 and 0 <= part4 <= 255):
+                print("Invalid IP address - values must be between 0 and 255.")
+            else:
+                # Check if the IP is private
+                if part1 == 10:  # 10.0.0.0 - 10.255.255.255
+                    print(f"The IP address {ip} is a Private IP.")
+                elif part1 == 172 and 16 <= part2 <= 31:  # 172.16.0.0 - 172.31.255.255
+                    print(f"The IP address {ip} is a Private IP.")
+                elif part1 == 192 and part2 == 168:  # 192.168.0.0 - 192.168.255.255
+                    print(f"The IP address {ip} is a Private IP.")
+                else:
+                    print(f"The IP address {ip} is a Public IP.")
+    
+    choice = input("Do you want to continue (Y/N): ")
+    if choice != "Y":
+        break
+    num +=1
+
+print("after exit")
+# print("after exit")
+
+#-------OUTPUT Example below-------------------
+
+(venv) [string]$ python3 ip_check_str.py 
+Enter an IP address: 192.1.1.1
+The IP address 192.1.1.1 is a Public IP.
+Do you want to continue (y/n): y
+Enter an IP address: 172.14.4.4
+The IP address 172.14.4.4 is a Public IP.
+Do you want to continue (y/n): y  
+Enter an IP address: 182.1.2.2
+The IP address 182.1.2.2 is a Public IP.
+Do you want to continue (y/n): y
+Enter an IP address: 172.16.3.4
+The IP address 172.16.3.4 is a Private IP.
+Do you want to continue (y/n): y
+Enter an IP address: 182.2.2.2
+The IP address 182.2.2.2 is a Public IP.
+Do you want to continue (y/n): y  ##---> note here, even after giving y, it exited why?
+(venv) [string]$ 
+
+```
+
+## Classifying Private and Public IP Addresses Using String Split and Validation Logic:
+
+```jsx
+while True:
+    # Ask user to enter an IP address
+    ip = input("Enter an IP address: ")
+
+    # Split the IP into 4 parts
+    parts = ip.split('.')  # e.g. '192.168.1.1' → ['192', '168', '1', '1']
+
+    # Step 1: Check if IP has exactly 4 parts
+    if len(parts) != 4:
+        print("Invalid IP address format - must have 4 parts separated by dots.")
+    else:
+        valid = True
+
+        # Step 2: Check if each part is a digit
+        for part in parts:
+            if not part.isdigit():
+                valid = False
+                print("Invalid IP address - contains non-numeric values.")
+                break
+
+        if valid:
+            # Convert parts to integers
+            p1 = int(parts[0])
+            p2 = int(parts[1])
+            p3 = int(parts[2])
+            p4 = int(parts[3])
+
+            # Step 3: Check if values are between 0 and 255
+            if not (0 <= p1 <= 255):
+                print("Invalid IP - first part out of range.")
+            elif not (0 <= p2 <= 255):
+                print("Invalid IP - second part out of range.")
+            elif not (0 <= p3 <= 255):
+                print("Invalid IP - third part out of range.")
+            elif not (0 <= p4 <= 255):
+                print("Invalid IP - fourth part out of range.")
+            else:
+                # Step 4: Classify the IP address
+                if p1 == 10:
+                    print(ip + " is a Private IP of Class A")
+                elif p1 == 172 and 16 <= p2 <= 31:
+                    print(ip + " is a Private IP of Class B")
+                elif p1 == 192 and p2 == 168:
+                    print(ip + " is a Private IP of Class C")
+                elif p1 == 127:
+                    print(ip + " is a Loopback Address")
+                elif 224 <= p1 <= 239:
+                    print(ip + " is a Class D (Multicast) IP Address")
+                elif 240 <= p1 <= 255:
+                    print(ip + " is a Class E (Experimental) IP Address")
+                else:
+                    print(ip + " is a Public IP Address")
+
+    # Ask user if they want to continue
+    answer = input("Would you like to continue? (yes/no): ")
+    if answer.lower() != "yes":
+        print("Exiting the program.")
+        break
+
+#-------OUTPUT Example below-------------------
+
+(venv) [string]$ python3 ip_check_list.py 
+Enter an IP address: 192.168.2.1 
+192.168.2.1 is a Private IP of Class C
+Would you like to continue? (yes/no): yes
+Enter an IP address: 182.6.6.6
+182.6.6.6 is a Public IP Address
+Would you like to continue? (yes/no): yes
+Enter an IP address: 192.1688.1.1
+Invalid IP - second part out of range.
+Would you like to continue? (yes/no): yes
+Enter an IP address:  10.1.1.1
+Invalid IP address - contains non-numeric values.
+Would you like to continue? (yes/no): yes
+Enter an IP address: 192.168.2.2
+192.168.2.2 is a Private IP of Class C
+Would you like to continue? (yes/no): no
+Exiting the program.
+(venv) [string]$ 
+
+```
